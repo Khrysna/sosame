@@ -37,6 +37,24 @@ class MethodChannelSosame extends SosamePlatform {
   }
 
   @override
+  Future<bool> isTwitterInstalled() async {
+    final isAppInstalled = await methodChannel.invokeMethod<bool>(
+      'isTwitterInstalled',
+    );
+
+    return isAppInstalled!;
+  }
+
+  @override
+  Future<bool> isWhatsAppInstalled() async {
+    final isAppInstalled = await methodChannel.invokeMethod<bool>(
+      'isWhatsAppInstalled',
+    );
+
+    return isAppInstalled!;
+  }
+
+  @override
   Future<void> shareInstagramStory({
     required String backgroundImagePath,
     required String sourceApplication,

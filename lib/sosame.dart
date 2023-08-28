@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/services.dart';
-import 'package:sosame/exceptions/package_exception.dart';
+import 'package:sosame/exceptions/package_exceptions.dart';
 import 'package:sosame/exceptions/sosame_exception.dart';
 import 'package:sosame/file_extensions.dart';
 import 'package:sosame/mime_type.dart';

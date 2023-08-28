@@ -1,0 +1,16 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+  package="com.krpranata.sosame">
+    <application>
+        <!-- Declares a provider which allows us to store files to share in
+             '.../caches/share_plus' and grant the receiving action access -->
+        <provider
+            android:name="com.krpranata.sosame.SosameFileProvider"
+            android:authorities="${applicationId}.share"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/sosame_paths"/>
+        </provider>
+    </application>
+</manifest>

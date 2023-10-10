@@ -135,12 +135,14 @@ class MethodChannelSosame extends SosamePlatform {
   Future<void> shareWhatsApp({
     required String? mediaPath,
     required String? text,
+    required String? phoneNumber,
     required String mimeType,
   }) async {
     final params = <String, dynamic>{
       'mediaPath': mediaPath,
       'text': text,
       'mimeType': mimeType,
+      'phoneNumber': phoneNumber,
     };
 
     await methodChannel.invokeMethod<void>('shareWhatsApp', params);

@@ -204,7 +204,11 @@ class Sosame {
     }
   }
 
-  static Future<void> shareWhatsApp({String? mediaPath, String? text}) async {
+  static Future<void> shareWhatsApp({
+    String? mediaPath,
+    String? text,
+    String? phoneNumber,
+  }) async {
     if (mediaPath == null && text == null) {
       throw const ShareWhatsAppException(
         'Both text and media must not be empty',
@@ -224,6 +228,7 @@ class Sosame {
         mediaPath: mediaPath,
         text: text,
         mimeType: mimeType,
+        phoneNumber: phoneNumber,
       );
     } on PlatformException catch (error, stackTrace) {
       if (error.code == 'packageNotFound') {

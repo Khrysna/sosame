@@ -87,6 +87,7 @@ abstract class SosamePlatform extends PlatformInterface {
   Future<void> shareWhatsApp({
     required String? mediaPath,
     required String? text,
+    required String? phoneNumber,
     required String mimeType,
   }) {
     throw UnimplementedError('shareWhatsApp() has not been implemented.');

@@ -266,6 +266,7 @@ class SosamePlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                 }
 
                 val mediaPath = call.argument<Any>("mediaPath") as String?
+                val phoneNumber = call.argument<Any>("phoneNumber") as String?
                 val text = call.argument<Any>("text") as String?
                 val mimeType = call.argument<Any>("mimeType") as String
 
@@ -284,7 +285,12 @@ class SosamePlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
 
                 shareWhatsApp.share(
                     context = context!!,
-                    option = WhatsAppOption(mediaUri = mediaUri, text = text, mimeType = mimeType),
+                    option = WhatsAppOption(
+                        mediaUri = mediaUri,
+                        text = text,
+                        mimeType = mimeType,
+                        phoneNumber = phoneNumber,
+                    ),
                 )
             }
             "isInstagramInstalled" -> {

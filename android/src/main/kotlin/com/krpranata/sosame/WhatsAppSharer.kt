@@ -4,12 +4,18 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 
-data class WhatsAppOption(val text: String?, val mediaUri: Uri?, val mimeType: String)
+data class WhatsAppOption(
+    val phoneNumber: String?, val text: String?, val mediaUri: Uri?, val mimeType: String
+)
 
 internal class WhatsAppSharer {
     fun share(context: Context, option: WhatsAppOption) {
         Intent(Intent.ACTION_SEND).apply {
             setPackage("com.whatsapp")
+
+            if (option.phoneNumber != null) {
+                putExtra("jid", option.phoneNumber + "@s.whatsapp.net")
+            }
 
             if (option.text != null) {
                 putExtra(Intent.EXTRA_TEXT, option.text)

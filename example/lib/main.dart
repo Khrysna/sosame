@@ -26,16 +26,10 @@ class _MyAppState extends State<MyApp> {
           child: Builder(builder: (context) {
             return ElevatedButton(
               onPressed: () async {
-                final result = await AssetPicker.pickAssets(context);
-
-                if (result != null && result.isNotEmpty) {
-                  final asset = result.first;
-                  final file = await asset.file;
-
-                  if (file != null) {
-                    Sosame.shareWhatsApp();
-                  }
-                }
+                Sosame.shareWhatsApp(
+                  text: 'tesss',
+                  phoneNumber: '628970428741',
+                );
               },
               child: const Text("Pick Image"),
             );

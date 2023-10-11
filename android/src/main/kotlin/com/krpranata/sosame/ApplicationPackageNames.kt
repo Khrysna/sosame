@@ -6,4 +6,5 @@ object ApplicationPackageNames {
     const val FACEBOOK = "com.facebook.katana"
     const val TWITTER = "com.twitter.android"
     const val WHATSAPP = "com.whatsapp"
+    const val WHATSAPP_BUSINESS = "com.whatsapp.w4b"
 }

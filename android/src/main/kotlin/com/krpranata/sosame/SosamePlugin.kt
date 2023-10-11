@@ -255,11 +255,14 @@ class SosamePlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
             "shareWhatsApp" -> {
                 val packageManager = context!!.packageManager
                 val providerAuthority = context!!.packageName + ".share"
-                val isApplicationInstalled = packageManager.isApplicationInstalled(
+                val isWhatsApplicationInstalled = packageManager.isApplicationInstalled(
                     packageName = ApplicationPackageNames.WHATSAPP
                 )
+                val isWhatsAppBusinessApplicationInstalled = packageManager.isApplicationInstalled(
+                    packageName = ApplicationPackageNames.WHATSAPP_BUSINESS
+                )
 
-                if (isApplicationInstalled.not()) {
+                if (isWhatsApplicationInstalled.not() && isWhatsAppBusinessApplicationInstalled) {
                     result.error(
                         "packageNotFound", "whatsapp application not installed in this device", null
                     )
@@ -283,6 +286,12 @@ class SosamePlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                     )
                 }
 
+                val packageName = if (isWhatsApplicationInstalled) {
+                    ApplicationPackageNames.WHATSAPP
+                } else {
+                    ApplicationPackageNames.WHATSAPP_BUSINESS
+                }
+
                 shareWhatsApp.share(
                     context = context!!,
                     option = WhatsAppOption(
@@ -290,8 +299,10 @@ class SosamePlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
                         text = text,
                         mimeType = mimeType,
                         phoneNumber = phoneNumber,
-                    ),
+                        packageName = packageName,
+                    )
                 )
+
             }
             "isInstagramInstalled" -> {
                 val packageManager = context!!.packageManager
